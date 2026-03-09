@@ -1,7 +1,9 @@
 import "./globals.css";
 import Link from "next/link";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children,} : {
+  children: React.ReactNode
+}) {
   return (
     <html lang="ko">
       <body className="bg-white text-gray-900">
