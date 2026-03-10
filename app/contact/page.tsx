@@ -1,8 +1,9 @@
-export default function Contact() {
+import QuoteCTA from "@/components/contact"
+
+export default function ContactPage() {
   return (
-    <div>
-      <h1>문의</h1>
-      <p>contact@company.com</p>
-    </div>
+    <main>
+      <QuoteCTA />
+    </main>
   )
 }
