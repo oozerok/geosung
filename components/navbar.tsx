@@ -1,171 +1,184 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
-import { Menu, X, ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { Menu, X, ChevronDown } from "lucide-react"
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [aboutDropdown, setAboutDropdown] = useState(false)
+  const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 20)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navLinks = [
-    { name: "핵심기술", href: "/#services" },
-    { name: "생산설비", href: "/#equipment" },
-    { name: "제작사례", href: "/product" },
-  ]
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+  }, [isMobileMenuOpen])
 
-  const aboutLinks = [
-    { name: "인사말", href: "/about/greeting" },
-    { name: "연혁", href: "/about/history" },
-    { name: "오시는 길", href: "/about/location" },
+  const navLinks = [
+    { 
+      name: "회사소개", 
+      href: "/about",
+      sub: [
+        { name: "인사말", href: "/about" },
+        { name: "회사개요", href: "/about/overview" },
+        { name: "연혁", href: "/about/history" },
+        { name: "오시는길", href: "/about/location" }
+      ]
+    },
+    { 
+      name: "사업분야", 
+      href: "/business",
+      sub: [
+        { name: "CNC 선반 가공", href: "/business" },
+        { name: "MCT 복합 가공", href: "/business/mct" },
+        { name: "5축 및 특수 가공", href: "/business/5axis" },
+        { name: "대형 부품 가공", href: "/business/large" }
+      ]
+    },
+    { 
+      name: "제품소개", 
+      href: "/portfolio",
+      sub: [
+        { name: "방위산업부품", href: "/portfolio/category/defense" },
+        { name: "유압부품", href: "/portfolio/category/hydraulic" },
+        { name: "조선기자재", href: "/portfolio/category/marine" }
+      ]
+    },
+    { 
+      name: "기술현황", 
+      href: "/technology",
+      sub: [
+        { name: "주요설비", href: "/technology" }
+      ]
+    },
+    { 
+      name: "고객지원", 
+      href: "/customer/notice",
+      sub: [
+        { name: "공지사항", href: "/customer/notice" },
+        { name: "견적문의", href: "/customer" }
+      ]
+    },
   ]
 
   return (
-    <header className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
-      scrolled ? "bg-white border-b-2 border-slate-900 py-3 shadow-md" : "bg-transparent py-5"
-    )}>
-      <div className="container mx-auto flex items-center justify-between px-6">
-        <Link href="/#" className="flex items-center gap-4 group">
-          <div className={cn(
-            "relative w-11 h-11 flex items-center justify-center rounded-none border-2 transition-all duration-300",
-            scrolled ? "bg-white border-slate-900" : "bg-white border-white"
-          )}>
-            <Image 
-              src="/logo.png" 
-              alt="거성정밀 로고" 
-              width={34}
-              height={34}
-              priority
-              className="object-contain"
-            />
-          </div>
-          
-          <div className="flex flex-col">
-            <span className={cn(
-              "text-2xl font-black tracking-tighter transition-colors leading-none",
-              scrolled ? "text-slate-950" : "text-white"
-            )}>
-              거성정밀
-            </span>
-            <span className={cn(
-              "text-[10px] font-bold tracking-[0.3em] transition-colors mt-1 opacity-80",
-              scrolled ? "text-blue-700" : "text-blue-200"
-            )}>
-              GEOSUNG PRECISION
-            </span>
-          </div>
-        </Link>
+    <>
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200" 
+          : "bg-transparent border-b border-white/10"
+      }`}>
+        <div className="container mx-auto px-6 flex items-center justify-between h-20 lg:h-24">
+          <a href="/" className="flex items-center gap-4 group">
+            <div className={`transition-all duration-500 rounded-xl flex items-center justify-center p-1.5 ${
+              !isScrolled ? "bg-white shadow-lg shadow-white/10" : "bg-transparent"
+            }`}>
+              <img 
+                src="/logo.png?v=2" 
+                alt="거성 로고" 
+                className={`w-auto transition-all duration-500 ${
+                  isScrolled ? "h-10 lg:h-12" : "h-12 lg:h-14"
+                }`} 
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className={`text-2xl lg:text-3xl font-black leading-none tracking-tighter transition-colors duration-500 ${
+                isScrolled ? "text-slate-900" : "text-white"
+              }`}>거성정밀</span>
+              <span className={`text-[10px] lg:text-[11px] font-black tracking-[0.2em] mt-1.5 uppercase transition-colors duration-500 ${
+                isScrolled ? "text-blue-600 opacity-80" : "text-blue-400"
+              }`}>Geosung Precision</span>
+            </div>
+          </a>
 
-        {/* desktop menu */}
-        <nav className="hidden lg:flex gap-10 items-center">
-          {/* About Us Dropdown */}
-          <div 
-            className="relative group"
-            onMouseEnter={() => setAboutDropdown(true)}
-            onMouseLeave={() => setAboutDropdown(false)}
-          >
-            <button className={cn(
-              "flex items-center gap-1 text-[15px] font-bold transition-all hover:text-blue-600 tracking-tight",
-              scrolled ? "text-slate-900" : "text-white"
-            )}>
-              회사소개 <ChevronDown className="w-4 h-4" />
-            </button>
-            
-            {aboutDropdown && (
-              <div className="absolute top-full left-0 pt-4 w-48 animate-in fade-in slide-in-from-top-2">
-                <div className="bg-white border-2 border-slate-900 shadow-xl overflow-hidden">
-                  {aboutLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      className="block px-5 py-3 text-[14px] font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-colors border-b last:border-0 border-slate-100"
-                      onClick={() => setAboutDropdown(false)}
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center h-full">
+            {navLinks.map((link) => (
+              <div 
+                key={link.name} 
+                className="relative h-full flex items-center px-8 group cursor-pointer"
+                onMouseEnter={() => setActiveMenu(link.name)}
+                onMouseLeave={() => setActiveMenu(null)}
+              >
+                <Link 
+                  href={link.href}
+                  className={`text-[17px] font-bold transition-colors duration-500 ${
+                    isScrolled ? "text-slate-800 hover:text-blue-700" : "text-white hover:text-blue-400"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white shadow-2xl border-t-2 border-blue-700 py-4 px-2 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0`}>
+                  {link.sub.map((subItem) => (
+                    <Link 
+                      key={subItem.name} 
+                      href={subItem.href} 
+                      className="block px-4 py-3 text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-all"
                     >
-                      {link.name}
+                      {subItem.name}
                     </Link>
                   ))}
                 </div>
               </div>
-            )}
+            ))}
           </div>
 
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              href={link.href}
-              className={cn(
-                "text-[15px] font-bold transition-all hover:text-blue-600 tracking-tight",
-                scrolled ? "text-slate-900" : "text-white"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Button size="lg" className={cn(
-            "ml-6 px-8 rounded-none font-black text-sm tracking-widest transition-all",
-            scrolled ? "bg-slate-950 hover:bg-blue-700 text-white" : "bg-white hover:bg-blue-500 text-slate-900 hover:text-white"
-          )} asChild>
-            <Link href="/#contact">견적문의</Link>
-          </Button>
-        </nav>
-                                                                                                                 
-        {/* mobile button */}
-        <button
-          className={cn(
-            "lg:hidden p-2 transition-colors",
-            scrolled ? "text-slate-900" : "text-white"
-          )}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-        </button>
-      </div>
+          <button 
+            className={`lg:hidden p-2 transition-colors ${isScrolled ? "text-slate-900" : "text-white"}`} 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          </button>
+        </div>
+      </nav>
 
-      {/* mobile menu */}
-      {open && (
-        <div className="lg:hidden bg-slate-950 border-t border-slate-800 animate-in fade-in slide-in-from-top-4">
-          <div className="flex flex-col p-8 gap-6">
-            <div className="text-blue-400 font-bold text-sm border-b border-slate-800 pb-2">회사소개</div>
-            {aboutLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                href={link.href} 
-                className="text-xl font-black text-white hover:text-blue-400 pl-4"
-                onClick={() => setOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="text-blue-400 font-bold text-sm border-b border-slate-800 pb-2 mt-4">메뉴</div>
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 bg-white z-[9999] overflow-y-auto animate-in slide-in-from-right duration-300">
+          <div className="p-6 flex flex-col gap-2">
+            <div className="flex items-center justify-between mb-8 border-b border-slate-100 pb-6">
+              <a href="/" className="flex items-center gap-3">
+                <img src="/logo.png?v=2" alt="거성 로고" className="h-10 w-auto" />
+                <span className="text-xl font-black text-slate-900">거성정밀</span>
+              </a>
+              <button className="p-2 text-slate-900" onClick={() => setIsMobileMenuOpen(false)}>
+                <X size={35} />
+              </button>
+            </div>
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                href={link.href} 
-                className="text-xl font-black text-white hover:text-blue-400 pl-4"
-                onClick={() => setOpen(false)}
-              >
-                {link.name}
-              </Link>
+              <div key={link.name} className="border-b border-slate-100 last:border-0 pb-4">
+                <div className="flex items-center justify-between py-4">
+                  <span className="text-xl font-bold text-slate-900">{link.name}</span>
+                  <ChevronDown className="text-slate-400" />
+                </div>
+                <div className="grid grid-cols-2 gap-2 pl-4">
+                  {link.sub.map((sub) => (
+                    <Link 
+                      key={sub.name} 
+                      href={sub.href} 
+                      className="text-sm text-slate-500 py-2 font-medium" 
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {sub.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
-            <Button className="mt-4 w-full h-16 bg-blue-600 text-lg font-black rounded-none" asChild onClick={() => setOpen(false)}>
-              <Link href="/contact">견적문의</Link>
-            </Button>
           </div>
         </div>
       )}
-    </header>
+    </>
   )
 }

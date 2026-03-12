@@ -1,6 +1,7 @@
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import QuickInquiry from "@/components/quick-inquiry"
 
 export const metadata = {
   title: "거성정밀 | CNC / MCT 정밀가공 전문기업",
@@ -16,18 +17,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-
     <html lang="ko">
-      <body className="bg-white text-gray-900">
-
+      <body className="bg-white text-gray-900 min-h-screen flex flex-col">
         <Navbar />
-
         <main className="flex-grow">
           {children}
         </main>
-
         <Footer />
-
+        <QuickInquiry />
       </body>
     </html>
   )
