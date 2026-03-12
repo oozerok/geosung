@@ -6,9 +6,10 @@ interface ScrollRevealProps {
   children: ReactNode
   width?: "fit-content" | "100%"
   delay?: number
+  className?: string
 }
 
-export default function ScrollReveal({ children, width = "100%", delay = 0 }: ScrollRevealProps) {
+export default function ScrollReveal({ children, width = "100%", delay = 0, className = "" }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -38,7 +39,7 @@ export default function ScrollReveal({ children, width = "100%", delay = 0 }: Sc
         isVisible 
           ? "opacity-100 translate-y-0" 
           : "opacity-0 translate-y-12"
-      }`}
+      } ${className}`}
     >
       {children}
     </div>
