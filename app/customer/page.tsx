@@ -150,7 +150,7 @@ export default function CustomerInquiryPage() {
                     </div>
                     <div>
                       <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Email</div>
-                      <div className="text-lg font-bold text-slate-900">GS7414@NAVER.COM</div>
+                      <div className="text-lg font-bold text-slate-900">contact@geosungprecision.com</div>
                     </div>
                   </div>
                   <div className="p-6 bg-slate-50 border border-slate-100 rounded-2xl flex items-center gap-6">

@@ -34,8 +34,8 @@ export async function POST(req: Request) {
 
     // Resend 메일 전송 옵션 구성
     const emailOptions: any = {
-      from: "Website <contact@geosung.store>",
-      to: process.env.TO_EMAIL || "gs7414@naver.com",
+      from: "Website <contact@geosungprecision.com>",
+      to: process.env.TO_EMAIL,
       replyTo: email,
       subject: `[홈페이지 문의] ${company} - ${subject}`,
       html: `

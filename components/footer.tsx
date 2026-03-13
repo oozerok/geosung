@@ -26,7 +26,7 @@ export default function Footer() {
               <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium">
                 <p><span className="text-slate-400 mr-2 font-bold">TEL</span> 051-301-7414</p>
                 <p><span className="text-slate-400 mr-2 font-bold">FAX</span> 051-305-7414</p>
-                <p><span className="text-slate-400 mr-2 font-bold">E-MAIL</span> contact@geosung.store</p>
+                <p><span className="text-slate-400 mr-2 font-bold">E-MAIL</span> contact@geosungprecision.com</p>
               </div>
             </div>
             <p className="text-[11px] text-slate-400 mt-8 font-bold uppercase tracking-wider">

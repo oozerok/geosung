@@ -16,7 +16,7 @@ export default function AboutOverviewPage() {
     // { label: "설립일", value: "2000년 9월 16일", icon: <Calendar className="w-5 h-5" /> },
     // { label: "인원현황", value: "11명 (사무직 1명, 생산부 10명)", icon: <Users className="w-5 h-5" /> },
     { label: "사업종목", value: "조선기자재, 유압, 기계, 방산", icon: <Briefcase className="w-5 h-5" /> },
-    { label: "이메일", value: "GS7414@NAVER.COM", icon: <Mail className="w-5 h-5" /> },
+    { label: "이메일", value: "contact@geosungprecision.com", icon: <Mail className="w-5 h-5" /> },
     { label: "연락처", value: "TEL: 051-301-7414 / FAX: 051-305-7414", icon: <Phone className="w-5 h-5" /> },
     { label: "주소", value: "부산시 사상구 낙동대로 1404번길 63, 352-17, 352-18 (삼락동)", icon: <MapPin className="w-5 h-5" /> },
   ]
