@@ -34,7 +34,7 @@ export default function BusinessLargePage() {
       mainTitle={<>웅장함 속에 담긴 정밀함 <br /> <span className="text-blue-700">중대형 및 중장비 부품 가공</span></>}
       description="거성정밀은 소형 부품을 넘어 중장비, 조선 엔진, 산업용 대형 감속기 등 묵직한 힘이 필요한 산업의 핵심 부품을 생산합니다. 대형 설비 인프라와 숙련된 기술이 만났습니다."
       points={["중대형 프레임 및 구조물 정밀 가공", "조선·해양용 엔진 핵심 부품 양산", "대형 회전체 부품의 초정밀 동심도 확보"]}
-      imageSrc="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1200&auto=format&fit=crop"
+      imageSrc="/large.png"
       imageAlt="Large-Scale Machining"
       technicalFeatures={technicalFeatures}
       ctaTitle="대형물 가공 견적 문의"

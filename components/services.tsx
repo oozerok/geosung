@@ -5,8 +5,8 @@ export default function Services() {
   const businessItems = [
     { title: "CNC 선반 가공", href: "/business", img: "/cnc.png" },
     { title: "MCT 복합 가공", href: "/business/mct", img: "/mct.png" },
-    { title: "5축 및 특수 가공", href: "/business/5axis", img: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6ad?q=80&w=800&auto=format&fit=crop" },
-    { title: "대형 부품 가공", href: "/business/large", img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&auto=format&fit=crop" },
+    { title: "5축 및 특수 가공", href: "/business/5axis", img: "/5axis.png" },
+    { title: "대형 부품 가공", href: "/business/large", img: "/large.png" },
   ]
 
   return (

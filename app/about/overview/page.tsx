@@ -15,7 +15,7 @@ export default function AboutOverviewPage() {
     { label: "대표자", value: "변우영", icon: <User className="w-5 h-5" /> },
     // { label: "설립일", value: "2000년 9월 16일", icon: <Calendar className="w-5 h-5" /> },
     // { label: "인원현황", value: "11명 (사무직 1명, 생산부 10명)", icon: <Users className="w-5 h-5" /> },
-    { label: "사업종목", value: "조선기자재, 유압, 기계, 방산", icon: <Briefcase className="w-5 h-5" /> },
+    { label: "사업종목", value: "유압, 기계, 방산, 조선기자재 정밀가공", icon: <Briefcase className="w-5 h-5" /> },
     { label: "이메일", value: "contact@geosungprecision.com", icon: <Mail className="w-5 h-5" /> },
     { label: "연락처", value: "TEL: 051-301-7414 / FAX: 051-305-7414", icon: <Phone className="w-5 h-5" /> },
     { label: "주소", value: "부산시 사상구 낙동대로 1404번길 63, 352-17, 352-18 (삼락동)", icon: <MapPin className="w-5 h-5" /> },
@@ -40,12 +40,12 @@ export default function AboutOverviewPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 border border-slate-200 rounded-2xl overflow-hidden shadow-sm mb-32">
             {infoItems.map((item, i) => (
               <div key={i} className="bg-white p-8 flex items-start gap-6 group hover:bg-blue-50/50 transition-colors">
-                <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
                   {item.icon}
                 </div>
                 <div>
                   <div className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">{item.label}</div>
-                  <div className="text-lg font-bold text-slate-900 leading-snug">{item.value}</div>
+                  <div className="text-lg font-bold text-slate-900 leading-snug break-all">{item.value}</div>
                 </div>
               </div>
             ))}

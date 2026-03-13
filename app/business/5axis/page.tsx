@@ -34,7 +34,7 @@ export default function Business5AxisPage() {
       mainTitle={<>한계 없는 정밀함의 실현 <br /> <span className="text-blue-700">5축 및 고난이도 특수 가공</span></>}
       description="거성정밀은 최신형 5축 가공기(D2-5AX)를 통해 대한민국 방위산업의 핵심 부품을 생산합니다. 복잡한 형상일수록 거성정밀의 진가가 발휘됩니다."
       points={["복합 형상 원스톱 가공 솔루션", "방산용 고강도 특수 소재 가공", "공정 단축을 통한 원가 경쟁력 확보"]}
-      imageSrc="https://images.unsplash.com/photo-1581093450021-4a7360e9a6ad?q=80&w=1200&auto=format&fit=crop"
+      imageSrc="/5axis.png"
       imageAlt="5-Axis Machining"
       technicalFeatures={technicalFeatures}
       ctaTitle="특수 가공 기술 상담"

@@ -27,8 +27,8 @@ export default function ProductDetailTemplate({ product }: ProductDetailProps) {
   return (
     <>
       <SubBanner 
-        title="제품소개" 
-        currentPath={["제품소개", product.category, product.title]} 
+        title="가공사례" 
+        currentPath={["가공사례", product.category, product.title]} 
       />
       <SubNav items={portfolioNav} activeItem={product.category} />
 

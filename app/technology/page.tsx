@@ -30,7 +30,7 @@ export default function TechnologyEquipmentPage() {
     <>
       <SubBanner 
         title="주요설비" 
-        currentPath={["기술현황", "주요설비"]} 
+        currentPath={["설비현황", "주요설비"]} 
       />
       <SubNav items={techNav} activeItem="주요설비" />
 
@@ -69,13 +69,13 @@ export default function TechnologyEquipmentPage() {
 
           <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="rounded-2xl overflow-hidden shadow-lg aspect-video relative group">
-              <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800" alt="Factory" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <img src="/machines/machine1.jpg" alt="Factory" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg aspect-video relative group">
-              <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6ad?q=80&w=800" alt="Machinery" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <img src="/machines/machine2.jpg" alt="Machinery" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg aspect-video relative group">
-              <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=800" alt="Production" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <img src="/machines/machine4.jpg" alt="Production" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
             </div>
           </div>
         </div>

@@ -47,7 +47,7 @@ export default function Navbar() {
       ]
     },
     { 
-      name: "제품소개", 
+      name: "가공사례", 
       href: "/portfolio",
       sub: [
         { name: "방위산업부품", href: "/portfolio/category/defense" },
@@ -56,7 +56,7 @@ export default function Navbar() {
       ]
     },
     { 
-      name: "기술현황", 
+      name: "설비현황", 
       href: "/technology",
       sub: [
         { name: "주요설비", href: "/technology" }

@@ -77,7 +77,7 @@ export default function AboutLocationPage() {
                   </div>
                   <div>
                     <div className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">ADDRESS</div>
-                    <div className="text-lg font-bold text-slate-900">경상남도 부산시 사상구 낙동대로 1404번길 63 (삼락동)</div>
+                    <div className="text-lg font-bold text-slate-900">부산광역시 사상구 낙동대로 1404번길 63 (삼락동)</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-6 p-8 bg-slate-50 border border-slate-100 rounded-2xl group hover:bg-white hover:border-blue-100 hover:shadow-xl transition-all duration-500">

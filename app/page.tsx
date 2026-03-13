@@ -189,7 +189,7 @@ export default function MainPage() {
                   href="/customer" 
                   className="inline-flex items-center gap-3 px-12 py-5 bg-blue-600 text-white font-black rounded-xl text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20 group"
                 >
-                  온라인 견적 문의하기
+                  견적 문의하기
                   <CheckCircle2 className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
