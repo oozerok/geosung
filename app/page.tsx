@@ -7,9 +7,40 @@ import Link from "next/link"
 import ScrollReveal from "@/components/scroll-reveal"
 import Counter from "@/components/counter"
 
+const siteUrl = "https://geosungprecision.com";
 export const metadata: Metadata = {
-  title: "거성정밀 - 초정밀 가공 솔루션",
-  description: "25년 가공 노하우, 정밀 부품 가공의 새로운 기준. 방위산업, 유압부품 전문 가공 기업 거성정밀입니다.",
+  title: {
+    default: "거성정밀 | CNC / MCT 정밀가공 전문",
+    template: "%s | 거성정밀",
+  },
+  description:
+    "거성정밀은 CNC 선반, MCT, 정밀부품 가공을 중심으로 산업용 핵심 부품 가공 솔루션을 제공합니다.",
+  keywords: [
+    "거성정밀",
+    "CNC 가공",
+    "정밀가공",
+    "선반가공",
+    "MCT 가공",
+    "부산 정밀가공",
+    "부산 CNC 가공",
+    "산업부품 가공",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "거성정밀 | CNC 정밀가공 전문",
+    description:
+      "CNC 선반, MCT, 정밀부품 가공 전문업체 거성정밀",
+    url: siteUrl,
+    siteName: "거성정밀",
+    locale: "ko_KR",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function MainPage() {
