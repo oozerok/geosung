@@ -9,6 +9,9 @@ export const metadata = {
   icons: {
     icon: "/logo.png",
   },
+  verification: {
+    naver: "3c57a8bbb2454ef40fe53a7a1b7bb09e28f59314"
+  }
 }
 
 export default function RootLayout({
