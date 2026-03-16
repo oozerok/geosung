@@ -1,8 +1,20 @@
+'use client'
+
+import { useEffect, useRef } from "react"
+import Script from "next/script"
 import SubBanner from "@/components/sub-banner"
 import SubNav from "@/components/sub-nav"
-import { MapPin, Phone, Printer, Bus, Car } from "lucide-react"
+import { MapPin, Phone, Bus, Car } from "lucide-react"
+
+declare global {
+  interface Window {
+    kakao: any
+  }
+}
 
 export default function AboutLocationPage() {
+  const mapRef = useRef<HTMLDivElement>(null)
+  
   const aboutNav = [
     { name: "인사말", href: "/about" },
     { name: "회사개요", href: "/about/overview" },
@@ -10,8 +22,59 @@ export default function AboutLocationPage() {
     { name: "오시는길", href: "/about/location" },
   ]
 
+  // 카카오 지도 초기화 함수
+  const initMap = () => {
+    if (typeof window !== "undefined" && window.kakao && window.kakao.maps) {
+      window.kakao.maps.load(() => {
+        if (!mapRef.current) return
+
+        const container = mapRef.current
+        const options = {
+          center: new window.kakao.maps.LatLng(35.174788, 128.975441),
+          level: 3,
+        }
+        
+        const map = new window.kakao.maps.Map(container, options)
+
+        // 주소-좌표 변환 객체를 생성합니다
+        const geocoder = new window.kakao.maps.services.Geocoder()
+
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch('부산광역시 사상구 낙동대로 1404번길 63', function(result: any, status: any) {
+          // 정상적으로 검색이 완료됐으면 
+          if (status === window.kakao.maps.services.Status.OK) {
+            const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x)
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            const marker = new window.kakao.maps.Marker({
+              map: map,
+              position: coords
+            })
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords)
+          } 
+        })
+
+        // 일반 지도/스카이뷰 타입 컨트롤 표시
+        const mapTypeControl = new window.kakao.maps.MapTypeControl()
+        map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT)
+
+        // 줌 컨트롤 표시
+        const zoomControl = new window.kakao.maps.ZoomControl()
+        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT)
+      })
+    }
+  }
+
   return (
     <>
+      {/* 카카오 지도 API 스크립트 - services 라이브러리 추가 */}
+      <Script
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&autoload=false&libraries=services`}
+        onReady={initMap}
+      />
+
       <SubBanner 
         title="오시는길" 
         currentPath={["회사소개", "오시는길"]} 
@@ -20,23 +83,17 @@ export default function AboutLocationPage() {
 
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6 max-w-5xl">
-          {/* Map Section - Real Google Map Embed with Marker */}
+          {/* Map Section */}
           <div className="w-full aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-sm border border-slate-200 mb-16 relative group">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.2721011190533!2d128.975440787349!3d35.174787964724915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568ea028198f1c9%3A0x6d9f38df0e7c569b!2z6rK97IOB64Ko64-EIOu2gOyCsOyLnCDshqzshqzqtawg7IK8652964-ZIDE0MDQtNjM!5e0!3m2!1sko!2skr!4v1710123456789!5m2!1sko!2skr" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen={true} 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="거성정밀 위치"
-            ></iframe>
+            {/* 지도 로딩 전 보여줄 스켈레톤/배경 */}
+            <div ref={mapRef} className="w-full h-full bg-slate-50 flex items-center justify-center">
+              <div className="text-slate-400 font-medium animate-pulse">지도를 불러오는 중입니다...</div>
+            </div>
             
             {/* Map Info Label Overlay */}
-            <div className="absolute top-6 left-6 p-6 bg-white/95 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-2xl hidden md:block">
+            <div className="absolute top-6 left-6 p-6 bg-white/95 backdrop-blur-sm border border-slate-100 rounded-2xl shadow-2xl z-10 hidden md:block">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#03C75A] rounded-xl flex items-center justify-center text-white shrink-0 shadow-lg shadow-green-600/20">
+                <div className="w-10 h-10 bg-[#FAE100] rounded-xl flex items-center justify-center text-[#3C1E1E] shrink-0 shadow-lg shadow-yellow-400/20">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -46,23 +103,23 @@ export default function AboutLocationPage() {
               </div>
             </div>
             
-            {/* Overlay links - Prioritizing Naver Maps */}
-            <div className="absolute bottom-8 right-8 flex gap-3">
-              <a 
-                href="https://map.naver.com/v5/search/부산시 사상구 낙동대로 1404번길 63" 
-                target="_blank" 
-                className="px-8 py-4 bg-[#03C75A] text-white font-black rounded-full shadow-2xl hover:bg-[#02b351] transition-all flex items-center gap-3 transform hover:-translate-y-1 scale-105"
-              >
-                <div className="w-6 h-6 bg-white rounded-md flex items-center justify-center text-[11px] text-[#03C75A] font-black">N</div>
-                네이버 지도로 길찾기
-              </a>
+            {/* Overlay links */}
+            <div className="absolute bottom-8 right-8 flex gap-3 z-10">
               <a 
                 href="https://map.kakao.com/?q=부산시 사상구 낙동대로 1404번길 63" 
                 target="_blank" 
+                className="px-8 py-4 bg-[#FAE100] text-[#3C1E1E] font-black rounded-full shadow-2xl hover:bg-[#ebd100] transition-all flex items-center gap-3 transform hover:-translate-y-1 scale-105"
+              >
+                <div className="w-6 h-6 bg-[#3C1E1E] rounded-md flex items-center justify-center text-[11px] text-[#FAE100] font-black">K</div>
+                카카오맵으로 길찾기
+              </a>
+              <a 
+                href="https://map.naver.com/v5/search/부산시 사상구 낙동대로 1404번길 63" 
+                target="_blank" 
                 className="px-6 py-4 bg-white text-slate-700 font-bold rounded-full shadow-xl hover:bg-slate-50 transition-all border border-slate-100 flex items-center gap-2"
               >
-                <div className="w-5 h-5 bg-[#FAE100] rounded-full flex items-center justify-center text-[10px] text-[#3C1E1E]">K</div>
-                카카오맵
+                <div className="w-5 h-5 bg-[#03C75A] rounded-full flex items-center justify-center text-[10px] text-white font-black">N</div>
+                네이버 지도
               </a>
             </div>
           </div>

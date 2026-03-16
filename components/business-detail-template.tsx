@@ -44,7 +44,7 @@ export default function BusinessDetailTemplate({
     { name: "CNC 선반 가공", href: "/business" },
     { name: "MCT 복합 가공", href: "/business/mct" },
     { name: "5축 및 특수가공", href: "/business/5axis" },
-    { name: "대형 부품 가공", href: "/business/large" },
+    // { name: "대형 부품 가공", href: "/business/large" },
   ]
 
   return (

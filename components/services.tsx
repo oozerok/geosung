@@ -3,10 +3,9 @@ import Link from "next/link"
 
 export default function Services() {
   const businessItems = [
-    { title: "CNC 선반 가공", href: "/business", img: "/cnc.png" },
+    { title: "CNC 선반 가공", href: "/business", img: "/cnc2.png" },
     { title: "MCT 복합 가공", href: "/business/mct", img: "/mct.png" },
     { title: "5축 및 특수 가공", href: "/business/5axis", img: "/5axis.png" },
-    { title: "대형 부품 가공", href: "/business/large", img: "/large.png" },
   ]
 
   return (
@@ -24,7 +23,7 @@ export default function Services() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {businessItems.map((item, i) => (
             <div key={i} className="group relative h-[450px] overflow-hidden rounded-2xl bg-slate-900 shadow-xl">
               <img 

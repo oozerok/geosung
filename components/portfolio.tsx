@@ -30,7 +30,7 @@ export default function Portfolio() {
               />
               
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-blue-700/60 lg:bg-blue-700/80 flex flex-col items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
+              <div className="absolute inset-0 bg-slate-950/40 lg:bg-blue-700/80 flex flex-col items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
                 <div className="w-12 h-12 rounded-full bg-white/20 border border-white/40 flex items-center justify-center text-white mb-6 transform lg:-translate-y-4 lg:group-hover:translate-y-0 transition-transform">
                   <Plus className="w-6 h-6" />
                 </div>
