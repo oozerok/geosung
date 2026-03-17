@@ -8,6 +8,7 @@ import Turnstile from "react-turnstile"
 
 export default function CustomerInquiryPage() {
   const [token, setToken] = useState<string | null>(null)
+  const [isAgreed, setIsAgreed] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [file, setFile] = useState<File | null>(null)
 
@@ -54,6 +55,11 @@ export default function CustomerInquiryPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
+    if (!isAgreed) {
+      alert("개인정보 수집 및 이용에 동의해 주세요.")
+      return
+    }
+
     if (!token) {
       alert("보안 검증(Turnstile)을 완료해 주세요.")
       return
@@ -240,6 +246,33 @@ export default function CustomerInquiryPage() {
                         </div>
                       )}
                     </div>
+                  </div>
+
+                  {/* 개인정보 처리방침 동의 영역 */}
+                  <div className="space-y-4">
+                    <label className="text-sm font-black text-slate-900 ml-1">개인정보 수집 및 이용 동의 <span className="text-red-500">*</span></label>
+                    <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-xs text-slate-500 overflow-y-auto max-h-32 leading-relaxed">
+                      <p className="font-bold text-slate-700 mb-1">[개인정보 수집 및 이용 안내]</p>
+                      <p>거성정밀은 고객님의 문의에 대한 답변 및 상담을 위해 아래와 같이 개인정보를 수집하고 있습니다.</p>
+                      <ul className="mt-2 space-y-1 list-disc list-inside">
+                        <li>수집 항목: 업체명, 담당자명, 연락처, 이메일</li>
+                        <li>수집 목적: 견적 문의 접수 및 상담 결과 회신</li>
+                        <li>보유 및 이용기간: <span className="text-blue-600 font-bold text-[11px]">문의 처리 완료 후 3년 보관 후 파기</span> (단, 관계 법령에 따라 보관이 필요한 경우 해당 기간까지 보관)</li>
+                      </ul>
+                      <p className="mt-2">귀하는 개인정보 수집 및 이용에 동의하지 않을 권리가 있으나, 동의 거부 시 견적 문의 이용이 제한될 수 있습니다.</p>
+                    </div>
+                    <label className="flex items-center gap-3 cursor-pointer group w-fit">
+                      <input 
+                        required 
+                        type="checkbox" 
+                        checked={isAgreed}
+                        onChange={(e) => setIsAgreed(e.target.checked)}
+                        className="w-5 h-5 rounded border-slate-300 text-blue-700 focus:ring-blue-600 cursor-pointer" 
+                      />
+                      <span className="text-sm font-bold text-slate-700 group-hover:text-blue-700 transition-colors">
+                        개인정보 수집 및 이용에 동의합니다.
+                      </span>
+                    </label>
                   </div>
 
                   <div className="flex justify-center">
