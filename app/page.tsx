@@ -46,6 +46,7 @@ export const metadata: Metadata = {
 export default function MainPage() {
   return (
     <>
+      <h1 className="sr-only">거성정밀 | CNC MCT 정밀가공 전문</h1>
       <Hero />
       
       {/* 4-Column Quick Links Section */}

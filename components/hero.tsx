@@ -64,9 +64,9 @@ export default function Hero() {
               {banner.tag}
             </span>
             
-            <h1 className={`text-4xl lg:text-7xl font-bold text-white leading-tight mb-10 tracking-tight transition-all duration-700 delay-300 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <h2 className={`text-4xl lg:text-7xl font-bold text-white leading-tight mb-10 tracking-tight transition-all duration-700 delay-300 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
               {banner.title}
-            </h1>
+            </h2>
             
             <p className={`text-white/90 text-lg lg:text-xl font-medium max-w-3xl leading-relaxed mb-12 transition-all duration-700 delay-500 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
               {banner.desc}
