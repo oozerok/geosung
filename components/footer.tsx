@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium">
                 <p><span className="text-slate-400 mr-2 font-bold">대표이사</span> 변우영</p>
-                <p><span className="text-slate-400 mr-2 font-bold">사업자등록번호</span> 000-00-00000</p>
+                <p><span className="text-slate-400 mr-2 font-bold">사업자등록번호</span> 606-06-34654</p>
                 <p><span className="text-slate-400 mr-2 font-bold">본사/공장</span> 부산광역시 사상구 낙동대로 1404번길 63</p>
               </div>
               <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium">
