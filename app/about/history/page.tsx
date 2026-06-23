@@ -1,6 +1,6 @@
 import SubBanner from "@/components/sub-banner"
 import SubNav from "@/components/sub-nav"
-import { Award, Rocket, TrendingUp, Cpu, ShieldCheck, Factory, History } from "lucide-react"
+import { Rocket, TrendingUp, Cpu, ShieldCheck, Factory, History } from "lucide-react"
 
 export default function AboutHistoryPage() {
   const aboutNav = [
@@ -18,8 +18,7 @@ export default function AboutHistoryPage() {
       items: [
         { year: "2026.03", text: "공식 홈페이지 전면 리뉴얼 및 온라인 고객 소통 강화" },
         { year: "2025.10", text: "대형 CNC 선반(SE2600) 및 자동화 설비 10대 추가 확충" },
-        { year: "2025.01", text: "스마트 공정 관리 시스템(MES) 고도화 추진" },
-        { year: "2024.05", text: "신규 특수 소재 가공 공정 특허 출원" }
+        { year: "2024.03", text: "친환경 및 안전 최우선 클린 작업장(Clean Workplace) 자체 조성 프로그램 실시" },
       ]
     },
     {
@@ -28,9 +27,9 @@ export default function AboutHistoryPage() {
       icon: <Cpu className="w-6 h-6" />,
       items: [
         { year: "2023.03", text: "화천 5축 가공기(D2-5AX) 도입 및 정밀 가공 역량 강화" },
-        { year: "2022.11", text: "방위산업 부품 품질 보증 시스템 최우수 등급 획득" },
-        { year: "2021.08", text: "글로벌 강소기업 유망 가공 파트너사 선정" },
-        { year: "2020.06", text: "ISO 9001:2015 품질경영시스템 인증 획득" }
+        { year: "2022.10", text: "고정밀 측정 장비 도입을 통한 자체 검사용 계측 프로세스 강화" },
+        { year: "2022.05", text: "3D CAD/CAM 최신 솔루션 도입을 통한 복합 가공 설계 프로세스 구축" },
+        { year: "2020.11", text: "가공 공정부터 완제품 정밀 검사까지의 3단계 자체 품질 검수 시스템 확립" }
       ]
     },
     {
@@ -39,7 +38,7 @@ export default function AboutHistoryPage() {
       icon: <TrendingUp className="w-6 h-6" />,
       items: [
         { year: "2018.12", text: "조선 기자재 핵심 슬리브 및 조인트 부품 양산 체제 구축" },
-        { year: "2015.04", text: "공장 생산 설비 레이아웃 최적화 및 확장 이전" },
+        { year: "2015.04", text: "공장 확장 이전 및 생산 효율성 극대화를 위한 설비 레이아웃 최적화" },
         { year: "2014.07", text: "고성능 머시닝센터(VESTA-1000) 시리즈 도입" },
         { year: "2010.07", text: "현대위아 CNC 선반 SKT100 시리즈 집중 도입" }
       ]

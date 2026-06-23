@@ -6,6 +6,7 @@ import { CheckCircle2, Factory, ShieldCheck, Users, Ruler } from "lucide-react"
 import Link from "next/link"
 import ScrollReveal from "@/components/scroll-reveal"
 import Counter from "@/components/counter"
+import AnnouncementPopup from "@/components/announcement-popup"
 
 const siteUrl = "https://geosungprecision.com";
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export const metadata: Metadata = {
 export default function MainPage() {
   return (
     <>
+      {/* <AnnouncementPopup /> */}
       <h1 className="sr-only">거성정밀 | CNC MCT 정밀가공 전문</h1>
       <Hero />
       
